@@ -1,6 +1,6 @@
 <template>
-  <b-container fluid class="app">
-    <HomeTemplate />
+  <b-container fluid class="login">
+    <LoginTemplate />
   </b-container>
 </template>
 
@@ -8,16 +8,17 @@
 import Vue from 'vue'
 
 export default Vue.extend({
-  name: 'Home',
+  name: 'Login',
 })
 </script>
 
 <style scoped>
-.app {
+.login {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
+  height: 100vh;
   background-color: #282828;
 }
 </style>
