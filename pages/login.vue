@@ -9,6 +9,7 @@ import Vue from 'vue'
 
 export default Vue.extend({
   name: 'Login',
+  transition: 'login',
 })
 </script>
 
@@ -20,5 +21,14 @@ export default Vue.extend({
   justify-content: center;
   height: 100vh;
   background-color: #282828;
+}
+
+.login-enter-active,
+.login-leave-active {
+  transition: opacity 0.5s;
+}
+.login-enter,
+.login-leave-active {
+  opacity: 0;
 }
 </style>
