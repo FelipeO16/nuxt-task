@@ -16,14 +16,21 @@
               <b-row>
                 <b-col>
                   <b-input-group prepend="Email" class="mt-4">
-                    <b-form-input></b-form-input>
+                    <b-form-input
+                      placeholder="place anything"
+                      value="test@email.com"
+                    ></b-form-input>
                   </b-input-group>
                 </b-col>
               </b-row>
               <b-row>
                 <b-col>
                   <b-input-group prepend="Password" class="mt-4">
-                    <b-form-input type="password"></b-form-input>
+                    <b-form-input
+                      type="password"
+                      placeholder="place anything"
+                      value="test123"
+                    ></b-form-input>
                   </b-input-group>
                 </b-col>
               </b-row>
@@ -56,7 +63,7 @@
           <b-row class="h-25">
             <b-col cols>
               <b-row class="h-100">
-                <b-col>
+                <b-col @click="$store.dispatch('api/setToken')">
                   <DefaultButton to="/rules"
                     ><span
                       class="login-text font-weight-normal d-flex align-items-center"
