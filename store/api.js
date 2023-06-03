@@ -62,7 +62,7 @@ export const actions = {
       await this.$axios.$put(`house_rules/${item.id}`, {
         "house_rules": {
             "name": item.name,
-            "active": item.active,
+            "active": item.active ? item.active : 0,
         }
       })
       this.dispatch('api/fetchList', state.response.data.pagination.current_page)
@@ -76,7 +76,7 @@ export const actions = {
       await this.$axios.$post(`house_rules`, {
         "house_rules": {
             "name": item.name,
-            "active": item.active,
+            "active": item.active ? item.active : 0,
         }
       })
       this.dispatch('api/fetchList', state.response.data.pagination.current_page)
