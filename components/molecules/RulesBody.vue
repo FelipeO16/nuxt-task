@@ -8,10 +8,9 @@
       head-variant="dark"
       foot-clone
       select-mode="single"
-      ref="selectableTable"
       selectable
-      @row-selected="onRowSelected"
       :fields="fields"
+      @row-selected="onRowSelected"
     >
       <template #cell(edit)="data">
         <b-button
@@ -33,13 +32,13 @@
     </b-pagination>
 
     <b-modal
+      ref="modalRef"
       v-model="showModal"
       title="Edit Item"
-      @hidden="closeModal"
-      ref="modalRef"
       no-wrap
+      @hidden="closeModal"
     >
-      <div class="p-2" v-if="selectedItem">
+      <div v-if="selectedItem" class="p-2">
         <b-col>
           <b-input-group prepend="ID" class="mt-4">
             <b-form-input v-model="selectedItem.id" disabled></b-form-input>
@@ -78,13 +77,8 @@
 
 <script>
 import Vue from 'vue'
-import { BIcon, BIconCheckSquare } from 'bootstrap-vue'
 
 export default Vue.extend({
-  components: {
-    BIcon,
-    BIconCheckSquare,
-  },
   data() {
     return {
       current_page: 1,

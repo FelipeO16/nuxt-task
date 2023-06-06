@@ -51,7 +51,6 @@ export const actions = {
   
   },
   setToken() {
-    console.log('token')
     const token = '40fe071962846075452a4f6123ae71697463cad20f51e237e2035b41af0513d8'
     this.commit('api/updateToken', token)
   },
@@ -67,7 +66,6 @@ export const actions = {
       })
       this.dispatch('api/fetchList', state.response.data.pagination.current_page)
     } catch (e) {
-      console.log(e)
     }
   },
   async createItem({ state }, item) {
@@ -82,7 +80,7 @@ export const actions = {
       this.dispatch('api/fetchList', state.response.data.pagination.current_page)
     }
     catch (e) {
-      console.log(e)
+
     }
   },
   async deleteItem({ state }, item) {
@@ -91,7 +89,7 @@ export const actions = {
       await this.$axios.$delete(`house_rules/${item.id}`)
       this.dispatch('api/fetchList', state.response.data.pagination.current_page)
     } catch (e) {
-      console.log(e)
+
     }
   },
 }
