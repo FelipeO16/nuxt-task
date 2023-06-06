@@ -4,8 +4,7 @@ export const state = () => ({
   response: {
     success: true,
     data: {
-      entities: [
-      ],
+      entities: [],
       pagination: {
         total: 17,
         count: 10,
@@ -35,7 +34,7 @@ export const getters = {
 }
 
 export const mutations = {
-   updateList(state, response) {
+  updateList(state, response) {
     state.response = response
   },
   updateToken(state, token) {
@@ -44,52 +43,55 @@ export const mutations = {
 }
 
 export const actions = {
-   async fetchList({ state }, newpage) {
+  async fetchList({ state }, newpage) {
     this.$axios.setToken(state.token, 'Bearer')
     const res = await this.$axios.$get(`house_rules?page=${newpage}`)
     this.commit('api/updateList', res)
-  
   },
   setToken() {
-    const token = '40fe071962846075452a4f6123ae71697463cad20f51e237e2035b41af0513d8'
+    const token =
+      '40fe071962846075452a4f6123ae71697463cad20f51e237e2035b41af0513d8'
     this.commit('api/updateToken', token)
   },
 
   async updateItem({ state }, item) {
     this.$axios.setToken(state.token, 'Bearer')
-    try{
+    try {
       await this.$axios.$put(`house_rules/${item.id}`, {
-        "house_rules": {
-            "name": item.name,
-            "active": item.active ? item.active : 0,
-        }
+        house_rules: {
+          name: item.name,
+          active: item.active ? item.active : 0,
+        },
       })
-      this.dispatch('api/fetchList', state.response.data.pagination.current_page)
-    } catch (e) {
-    }
+      this.dispatch(
+        'api/fetchList',
+        state.response.data.pagination.current_page
+      )
+    } catch (e) {}
   },
   async createItem({ state }, item) {
     this.$axios.setToken(state.token, 'Bearer')
-    try{
+    try {
       await this.$axios.$post(`house_rules`, {
-        "house_rules": {
-            "name": item.name,
-            "active": item.active ? item.active : 0,
-        }
+        house_rules: {
+          name: item.name,
+          active: item.active ? item.active : 0,
+        },
       })
-      this.dispatch('api/fetchList', state.response.data.pagination.current_page)
-    }
-    catch (e) {
-
-    }
+      this.dispatch(
+        'api/fetchList',
+        state.response.data.pagination.current_page
+      )
+    } catch (e) {}
   },
   async deleteItem({ state }, item) {
     this.$axios.setToken(state.token, 'Bearer')
-    try{
+    try {
       await this.$axios.$delete(`house_rules/${item.id}`)
-      this.dispatch('api/fetchList', state.response.data.pagination.current_page)
-    } catch (e) {
-
-    }
+      this.dispatch(
+        'api/fetchList',
+        state.response.data.pagination.current_page
+      )
+    } catch (e) {}
   },
 }

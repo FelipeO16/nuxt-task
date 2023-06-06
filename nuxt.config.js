@@ -21,7 +21,6 @@ export default {
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: [{ path: '@/components', pathPrefix: false }],
-  
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
@@ -54,6 +53,6 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
   server: {
-    host: '0.0.0.0' // default: localhost
-}
+    host: '0.0.0.0', // default: localhost
+  },
 }
